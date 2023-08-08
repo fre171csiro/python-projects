@@ -45,8 +45,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         
       - name: Activate env and Test with pytest
-        run: poetry run pytest -cov > pytest-coverage.txt
-
+        run: poetry run pytest
 
 
   # linter:
