@@ -1,56 +1,3 @@
-
-# Python Project Template
-
-A low dependency and really simple to start project template for Python Projects.
-
-See also 
-- [Flask-Project-Template](https://github.com/rochacbruno/flask-project-template/) for a full feature Flask project including database, API, admin interface, etc.
-- [FastAPI-Project-Template](https://github.com/rochacbruno/fastapi-project-template/) The base to start an openapi project featuring: SQLModel, Typer, FastAPI, JWT Token Auth, Interactive Shell, Management Commands.
-
-### HOW TO USE THIS TEMPLATE
-
-> **DO NOT FORK** this is meant to be used from **[Use this template](https://github.com/rochacbruno/python-project-template/generate)** feature.
-
-1. Click on **[Use this template](https://github.com/rochacbruno/python-project-template/generate)**
-3. Give a name to your project  
-   (e.g. `my_awesome_project` recommendation is to use all lowercase and underscores separation for repo names.)
-3. Wait until the first run of CI finishes  
-   (Github Actions will process the template and commit to your new repo)
-4. If you want [codecov](https://about.codecov.io/sign-up/) Reports and Automatic Release to [PyPI](https://pypi.org)  
-  On the new repository `settings->secrets` add your `PYPI_API_TOKEN` and `CODECOV_TOKEN` (get the tokens on respective websites)
-4. Read the file [CONTRIBUTING.md](CONTRIBUTING.md)
-5. Then clone your new project and happy coding!
-
-> **NOTE**: **WAIT** until first CI run on github actions before cloning your new project.
-
-### What is included on this template?
-
-- 🖼️ Templates for starting multiple application types:
-  * **Basic low dependency** Python program (default) [use this template](https://github.com/rochacbruno/python-project-template/generate)
-  * **Flask** with database, admin interface, restapi and authentication [use this template](https://github.com/rochacbruno/flask-project-template/generate).
-  **or Run `make init` after cloning to generate a new project based on a template.**
-- 📦 A basic [setup.py](setup.py) file to provide installation, packaging and distribution for your project.  
-  Template uses setuptools because it's the de-facto standard for Python packages, you can run `make switch-to-poetry` later if you want.
-- 🤖 A [Makefile](Makefile) with the most useful commands to install, test, lint, format and release your project.
-- 📃 Documentation structure using [mkdocs](http://www.mkdocs.org)
-- 💬 Auto generation of change log using **gitchangelog** to keep a HISTORY.md file automatically based on your commit history on every release.
-- 🐋 A simple [Containerfile](Containerfile) to build a container image for your project.  
-  `Containerfile` is a more open standard for building container images than Dockerfile, you can use buildah or docker with this file.
-- 🧪 Testing structure using [pytest](https://docs.pytest.org/en/latest/)
-- ✅ Code linting using [flake8](https://flake8.pycqa.org/en/latest/)
-- 📊 Code coverage reports using [codecov](https://about.codecov.io/sign-up/)
-- 🛳️ Automatic release to [PyPI](https://pypi.org) using [twine](https://twine.readthedocs.io/en/latest/) and github actions.
-- 🎯 Entry points to execute your program using `python -m <python_projects>` or `$ python_projects` with basic CLI argument parsing.
-- 🔄 Continuous integration using [Github Actions](.github/workflows/) with jobs to lint, test and release your project on Linux, Mac and Windows environments.
-
-> Curious about architectural decisions on this template? read [ABOUT_THIS_TEMPLATE.md](ABOUT_THIS_TEMPLATE.md)  
-> If you want to contribute to this template please open an [issue](https://github.com/rochacbruno/python-project-template/issues) or fork and send a PULL REQUEST.
-
-[❤️ Sponsor this project](https://github.com/sponsors/rochacbruno/)
-
-<!--  DELETE THE LINES ABOVE THIS AND WRITE YOUR PROJECT README BELOW -->
-
----
 # python_projects
 
 [![codecov](https://codecov.io/gh/fre171csiro/python-projects/branch/main/graph/badge.svg?token=python-projects_token_here)](https://codecov.io/gh/fre171csiro/python-projects)
@@ -81,5 +28,57 @@ $ python_projects
 ```
 
 ## Development
+### Getting Started
+**Dev setup**
+1. Install `pyenv` if not already installed on your dev machine (see steps below), this is optional however it makes managing python easier
+1. Install `poetry` (see steps below).  `poetry` is used to manage the python environment and is a alternative to `conda`
+1. Setup the project environment
+    1. Using the `cmd` change directory to your code parent directory and:
+    1. Using `pyenv` install python 3.10.10, e.g. `pyenv install 3.10.10`
+    1. Set the local version of python - `pyenv local 3.10.10`
+    1. Build the python environment - `poetry install`
+    1. Activate the environment - `poetry shell`
+    1. Open a `.ipynb` file and set the kernel to `.venv/Scripts/python.exe`
+1. Run the unit tests (make sure the existing code is passing all tests prior to use)
+    1. Set the workspace interpreter to `.venv/Scripts/python.exe`
+        1. ctrl+shift+p "Select Interpreter" and select '.venv':poetry
+    1. Open the 'tests' directory or use the VS Code test extension to run all tests
+
+### Installation process (Dev env)
+
+Python Package Manager is a Python utility intended to simplify the tasks of locating, installing, upgrading and removing Python packages. It can determine if the most recent version of a software package is installed on a system, and can install or upgrade that package from a local or remote host. [Wikipedia](https://en.wikipedia.org/wiki/Python_Package_Manager)
+
+1. Install (optional, but helpful) `pyenv` to manage python version for different scenarios
+>>>'pyenv lets you easily switch between multiple versions of Python. It's simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one thing well.'
+>>>- [pyenv overview](https://github.com/pyenv/pyenv#getting-pyenv)
+>>>- [pyenv linux installer](https://github.com/pyenv/pyenv-installer)
+>>>- [pyenv windows installer](https://github.com/pyenv-win/pyenv-win) Don't forget to put pyenv in you [PATH](https://github.com/pyenv-win/pyenv-win/blob/master/docs/installation.md#add-system-settings)
+
+[This](https://blog.teclado.com/how-to-use-pyenv-manage-python-versions/) is a useful page explaining the use of pyenv. 
+
+2. Install `poetry` to manage project/venv dependencies
+>>We use [poetry](https://python-poetry.org/docs/) to manage the python environment and dependencies.  If you don't have poetry installed please [install](https://python-poetry.org/docs/#installing-with-the-official-installer) it in your base environment and add poetry to your PATH.
+
+>>[Basic usage](https://python-poetry.org/docs/basic-usage/) will help get you started using poetry.  If `pyproject.toml` does not exist in the project directory you can use `poetry init`.  If the project already has a `pyproject.toml` file you can just use `poetry install` and all dependencies will be installed in a environment folder `.venv` and a local lock file (`poetry.lock`) generated.  To add further dependencies run `poetry add [a package name]` or to remove an existing package/dependency `postry remove [package name to remove]`.
+
+I like to keep the `.venv` in my project directory so I use `poetry config --local virtualenvs.in-project true`
+
+You can specify a package to add in the following forms:
+  - A single name (requests): this will search for matches on PyPI
+  - A name and a constraint (requests@^2.23.0)
+  - A git url (git+https://github.com/python-poetry/poetry.git)
+  - A git url with a revision (git+https://github.com/python-poetry/poetry.git#develop)
+  - A file path (../my-package/my-package.whl)
+  - A directory (../my-package/)
+  - A url (https://example.com/packages/my-package-0.1.0.tar.gz)
+
+*Note*: Some systems will use a `requirements.txt` to build a python environment, therefore to easily generate a the `requirements.txt` run `refresh_requirements.sh` after any changes to the packages made with `poetry`
+
+## Notebooks/Lab books
+These can be used within Visual Studio Code or run in your local browser
+
+If running in a Web browser users will need to install the kernel with `python -m ipykernel install --user --name .venv --display-name outlook-hydro`, which needs to be executed from the command prompt prior to opening the notebook.  Then when loading the notebook select the named `outlook-hydro` kernal.
+
+To run in your browser open a terminal (make sure you have activated your environment) with the root folder and type `jupyter notebook` this will load a Jupyter Notebook in your browser. If you replace the url ending 'tree' with 'lab' the server should load a lab book which is more user friendly 
 
 Read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
