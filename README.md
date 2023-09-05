@@ -82,3 +82,6 @@ If running in a Web browser users will need to install the kernel with `python -
 To run in your browser open a terminal (make sure you have activated your environment) with the root folder and type `jupyter notebook` this will load a Jupyter Notebook in your browser. If you replace the url ending 'tree' with 'lab' the server should load a lab book which is more user friendly 
 
 Read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+
+## Acknowledgments
+[rockacbruno](https://github.com/rochacbruno) and his template https://github.com/rochacbruno/python-project-template
